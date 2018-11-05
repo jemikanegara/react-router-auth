@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 class ListEmployees extends Component {
   constructor(props) {
@@ -8,11 +9,15 @@ class ListEmployees extends Component {
     };
   }
   render() {
-    return (
-      <div>
-        <h1>List of Employees</h1>
-      </div>
-    );
+    if (this.props.isAuthenticated === false) {
+      return <Redirect to="/login" />;
+    } else {
+      return (
+        <div>
+          <h1>List of Employees</h1>
+        </div>
+      );
+    }
   }
 }
 
